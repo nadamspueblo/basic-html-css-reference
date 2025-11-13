@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML and CSS Reference Guide</title>
+    <title>HTML and CSS Reference | Pueblo CS</title>
+    <!-- Removed the unused Tailwind CSS script -->
     <style>
-        /* 1. Import Fonts and Define CSS Variables from base-styles.css */
+        /* 1. Original Theme Styles */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Sofia+Sans&display=swap');
 
         :root {
@@ -22,11 +23,10 @@
           --light-bg-color: rgb(100, 100, 100);
         }
 
-        /* Apply base styles */
         body {
-            font-family: 'Sofia Sans', sans-serif; /* Updated Font */
-            background-color: var(--secondary-bg-color); /* Updated Color */
-            color: var(--primary-text-color); /* Updated Color */
+            font-family: 'Sofia Sans', sans-serif;
+            background-color: var(--secondary-bg-color);
+            color: var(--primary-text-color);
             margin: 0;
             padding: 20px 0;
             display: flex;
@@ -35,8 +35,8 @@
         }
 
         header {
-            background-color: var(--active-color); /* Updated Color */
-            color: var(--primary-bg-color); /* Updated Color */
+            background-color: var(--active-color);
+            color: var(--primary-bg-color);
             padding: 30px 20px;
             text-align: center;
             width: 100%;
@@ -44,102 +44,90 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif; /* Updated Font */
-            color: var(--active-color); /* Updated Color */
-            margin: 10px 0;
+        h1 { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.75rem; /* Increased size for better hierarchy */
+            color: var(--primary-bg-color);
         }
-
-        h1 { font-size: 2.25rem; }
-        h2 { 
-            font-size: 1.75rem; 
-            border-bottom: 2px solid var(--secondary-bg-color); /* Updated Color */
-            padding-bottom: 5px; 
-        }
-        h3 { 
-            font-size: 1.25rem; 
-            color: var(--dark-text-color); /* Updated Color */ 
-            margin-top: 25px;
-        }
-
+        
         main {
             max-width: 1100px;
             width: 95%;
-            background-color: var(--primary-bg-color); /* Updated Color */
-            padding: 30px;
+            padding: 0;
             border-radius: 12px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background-color: transparent;
         }
 
-        /* --- Structural Element Styles --- */
-
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 1px solid var(--secondary-bg-color); /* Updated Color */
-            border-radius: 8px;
+        /* 2. Static Main Headings */
+        h2.static-heading { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.25rem; /* Reduced size for better hierarchy */
+            font-weight: 700;
+            color: var(--dark-text-color); 
+            text-align: center;
+            padding: 30px 10px 15px;
+            margin-top: 30px;
+            border-bottom: 2px solid var(--active-color); /* Softened border */
         }
 
-        .tag-section, .css-section {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-left: 5px solid var(--active-color); /* Updated Color */
-            background-color: var(--active-primary-bg-color); /* Updated Color */
+        /* 3. Original Content Styling (for content INSIDE panels) */
+        .content-container {
+            /* General styling for the area containing all accordion items */
+            padding: 10px 0; 
         }
 
-        /* --- Table Styles for Readability --- */
+        /* Responsive Table Container */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 6px;
+            margin-top: 15px;
+            overflow: hidden; /* Clips the table corners */
+            border: 1px solid var(--secondary-bg-color); /* Adds a faint border */
+        }
+
+        /* Table styles */
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            margin-top: 15px;
+            margin-top: 0; /* Handled by container */
             font-size: 0.9em;
-            overflow: hidden;
-            border-radius: 6px;
+            /* overflow: hidden; */ /* Moved to .table-container */
+            /* border-radius: 6px; */ /* Moved to .table-container */
         }
-
         th, td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid var(--secondary-bg-color); /* Updated Color */
+            border-bottom: 1px solid var(--secondary-bg-color);
         }
-
         th {
-            background-color: var(--active-primary-bg-color); /* Updated Color */
-            color: var(--primary-text-color); /* Updated Color */
+            background-color: var(--active-primary-bg-color);
+            color: var(--primary-text-color);
             font-weight: 600;
         }
-        
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Zebra striping for table rows */
         tbody tr:nth-child(even) {
-            background-color: var(--active-primary-bg-color); /* Updated Color */
+            background-color: #f5f5ff; 
         }
-
-        /* --- Code Highlighting --- */
-        /* General inline code style (used by HTML tags in the first column, etc.) */
+        
+        /* Code styles */
         code {
-            background-color: var(--active-primary-bg-color); /* Light background */
-            color: var(--dark-text-color); /* Dark text */
+            background-color: var(--active-primary-bg-color);
+            color: var(--dark-text-color);
             padding: 3px 6px;
             border-radius: 4px;
             font-family: monospace;
             font-weight: 600;
         }
-        
-        /* New style: Apply dark background to code examples within table cells for readability */
         td code {
             background-color: var(--light-bg-color); 
             color: var(--primary-bg-color);
-            padding: 3px 6px;
+            padding: 4px; 
         }
-        
         pre {
-            background-color: var(--light-bg-color); /* Updated Color (dark) */
-            color: var(--primary-bg-color); /* Updated Color (white) */
+            background-color: var(--light-bg-color);
+            color: var(--primary-bg-color);
             padding: 15px;
             border-radius: 6px;
             overflow-x: auto;
@@ -147,135 +135,64 @@
             word-wrap: break-word;
             margin-top: 15px;
             margin-bottom: 15px;
-            /* Reset code style inside pre for better syntax highlighting base */
             font-weight: normal; 
         }
         
+        /* === FIX ADDED HERE === */
+        /* This rule resets the <code> style when it's inside a <pre> block */
         pre code {
-            background-color: transparent;
-            color: var(--primary-bg-color);
-            padding: 0;
-            font-weight: normal;
+            background-color: transparent; /* Allows <pre> background to show */
+            color: inherit; /* Uses the <pre> text color (white) */
+            padding: 0; /* Removes the extra padding */
+            font-weight: normal; /* Uses the <pre> font-weight */
         }
 
-        /* Syntax Highlighting Styles */
-        /* HTML Tags and CSS Selectors/Keywords */
-        .syntax-tag, .syntax-keyword { 
-            color: #FFD700; /* Gold */ 
-            font-weight: bold;
-        } 
-        /* HTML Attributes and CSS Properties */
-        .syntax-attr, .syntax-prop { 
-            color: #ADFF2F; /* Green Yellow */ 
-        } 
-        /* HTML Attribute Values and CSS Values/Strings */
-        .syntax-string { 
-            color: #B0C4DE; /* LightSteelBlue */ 
-        } 
-        /* Comments */
-        .syntax-comment { 
-            color: #808080; /* Gray */ 
-            font-style: italic;
-        }
-        /* Specific CSS Selectors (Class/ID) */
-        .syntax-selector {
-            color: #FFA07A; /* LightSalmon */
-        }
-        /* Punctuation */
-        .syntax-punct {
-            color: #E0FFFF; /* LightCyan */
-        }
-
-
-        /* --- Link Styling --- */
-        a {
-            color: var(--active-color); /* Updated Color */
-            text-decoration: none;
-        }
-
-        /* Change look when element is hovered example */
-        a:hover {
-            color: var(--dark-text-color); /* Updated Color for strong contrast */
-            text-decoration: underline;
-        }
-
-        /* --- Text Formatting Examples --- */
-        mark {
-            background-color: var(--secondary-bg-color); /* Updated Color */
-            padding: 2px 4px;
-        }
+        /* Syntax Highlighting kept for pre blocks */
+        .syntax-tag, .syntax-keyword { color: #FFD700; font-weight: bold;} 
+        .syntax-attr, .syntax-prop { color: #ADFF2F; } 
+        .syntax-string { color: #B0C4DE; } 
+        .syntax-comment { color: #808080; font-style: italic;}
+        .syntax-selector { color: #FFA07A;}
+        .syntax-punct { color: #E0FFFF;}
         
-        .list-description {
-            font-style: italic;
-            font-size: 0.9em;
-            color: var(--medium-text-color); /* Updated Color */
-            margin-top: 5px;
-        }
-
-        /* --- CSS Tip/Trick Styles & Demo Styles --- */
-        
-        /* Styles for CSS Demos */
-        .demo-box {
-            width: 150px;
-            height: 150px;
-            background-color: var(--active-color); /* Updated Color */
-            border-radius: 8px;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-bg-color);
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        /* --- Box Model Demo Styles --- */
+        /* Demo/Box Model Styles */
         .box-model-demo {
             display: block;
             margin: 30px auto;
             width: 250px;
-            border: 4px solid var(--active-color); /* Updated Color */
+            border: 4px solid var(--active-color);
             padding: 20px;
-            background-color: var(--active-primary-bg-color); /* Updated Color */
+            background-color: var(--active-primary-bg-color);
             text-align: center;
             border-radius: 6px;
         }
         .box-model-content {
-            background-color: var(--active-color); /* Updated Color */
+            background-color: var(--active-color);
             color: var(--primary-bg-color);
             padding: 10px;
             border-radius: 4px;
             font-size: 0.9em;
             font-weight: bold;
         }
-        /* New style to reflect box model color changes */
-        .box-model-demo > p {
-            color: var(--active-color);
-        }
-
-        /* --- Transition Demo Styles (Hover over the box to see the change) --- */
-        .transition-demo {
-            transition-property: background-color, transform;
-            transition-duration: 0.5s;
-            transition-timing-function: ease-in-out;
-            cursor: pointer;
-        }
-        .transition-demo:hover {
-            background-color: var(--primary-text-color); /* Updated Color (dark gray) */
-            transform: scale(1.05);
-        }
-
-        /* --- Filter Demo Styles --- */
-        .filter-demo-image {
+        .background-demo-box {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: 200px;
+            margin: 20px auto;
             border-radius: 8px;
-            transition: filter 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-image: url("https://picsum.photos/id/1/200/300");
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 0 5px black;
+            border: 3px solid var(--dark-text-color);
         }
         .filter-demo-container:hover .filter-demo-image {
-            /* Using standard colors here as they are visual effects */
             filter: grayscale(100%) blur(2px) drop-shadow(0 0 10px var(--active-color));
         }
         .filter-demo-container {
@@ -287,20 +204,47 @@
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        /* --- Animation Demo Styles --- */
+        .filter-demo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: filter 0.5s ease;
+        }
+        .demo-box {
+            width: 150px;
+            height: 150px;
+            background-color: var(--active-color);
+            border-radius: 8px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-bg-color);
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .transition-demo {
+            transition-property: background-color, transform;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-in-out;
+            cursor: pointer;
+        }
+        .transition-demo:hover {
+            background-color: var(--primary-text-color);
+            transform: scale(1.05);
+        }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
         .animation-demo {
-            background-color: var(--active-color); /* Updated Color */
+            background-color: var(--active-color);
             animation-name: bounce;
             animation-duration: 1.5s;
             animation-iteration-count: infinite;
         }
-        
-        /* New Text Formatting Demo Styles */
         .formatting-demo-container {
             border: 1px solid var(--secondary-bg-color);
             padding: 15px;
@@ -310,25 +254,76 @@
             line-height: 1.6;
         }
         
-        hr {
-            margin: 40px 0; 
-            border-top: 2px dashed var(--medium-text-color); /* Updated Color */
+        /* 4. Accordion Specific Styles (applied to sub-sections) */
+
+        .accordion {
+            background-color: var(--primary-bg-color); 
+            color: var(--active-color);
+            cursor: pointer;
+            padding: 14px 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.25rem; /* Smaller than main heading */
+            font-weight: 700;
+            transition: background-color 0.2s ease, border-radius 0.2s ease;
+            border-radius: 8px; 
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: 'Orbitron', sans-serif;
+            border: 1px solid var(--active-color);
         }
 
-        /* --- Footer Styling --- */
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            width: 100%;
-            background-color: var(--secondary-bg-color); /* Updated Color */
-            font-size: 0.8em;
-            color: var(--primary-text-color); /* Updated Color */
+        .accordion:hover {
+            background-color: var(--active-primary-bg-color);
         }
         
-        .small-text {
-            font-size: 0.9rem;
-            color: var(--primary-bg-color); /* Updated Color (white) */
+        .accordion.active {
+            background-color: var(--active-color);
+            color: white;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color: var(--active-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .panel {
+            padding: 0 20px;
+            background-color: var(--primary-bg-color);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--secondary-bg-color); 
+            border-top: none;
+        }
+        
+        .panel.show {
+            max-height: 5000px; 
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .icon {
+            margin-left: 10px;
+            transition: transform 0.4s ease-out, border-color 0.4s ease-out;
+            /* New CSS-drawn chevron styles */
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid var(--active-color);
+            border-bottom: 2px solid var(--active-color);
+            transform: rotate(45deg); /* Down-arrow shape */
+        }
+        
+        .accordion.active .icon {
+            transform: rotate(225deg); /* Up-arrow shape */
+            border-color: white;
         }
     </style>
 </head>
@@ -336,69 +331,78 @@
 
     <header>
         <h1>HTML and CSS Reference Guide</h1>
-        <p class="small-text">Based on your class material. This document contains examples of <b>Structural Tags</b>, <b>Formatting</b>, <b>Selectors</b>, and <b>Properties</b>.</p>
+        <p class="small-text">Interactive reference with key tags, selectors, and properties.</p>
     </header>
 
     <main>
         
-        <section id="html-tags">
-            <h2>HTML Tag List</h2>
-            <p>This is a list of the tags we have used in class. For a full list, see <a href="https://www.w3schools.com/tags/default.asp" target="_blank">w3schools.com/tags</a>.</p>
+        <!-- ============================================== -->
+        <!-- MAIN SECTION: HTML TAG LIST (STATIC HEADING) -->
+        <!-- ============================================== -->
+        <h2 class="static-heading">HTML Tag Reference</h2>
+        <div class="content-container">
+            <p style="margin-top: 10px; padding: 0 10px;">This is a list of the tags we have used in class. For a full list, see <a href="https://www.w3schools.com/tags/default.asp" target="_blank" style="color: var(--active-color);">w3schools.com/tags</a>.</p>
 
-            <section class="tag-section">
-                <h3>Structural Tags</h3>
+            <!-- ACCORDION: Structural Tags -->
+            <button class="accordion active" id="btn-structural">
+                Structural Tags
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel show">
                 <p>These are the fundamental container elements used to organize and style your webpage content.</p>
-                <table>
-                    <thead>
-                        <tr><th>Tag</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>&lt;div&gt;&lt;/div&gt;</code></td><td>Generic <b>block</b> element container (used for large sections of content)</td></tr>
-                        <tr><td><code>&lt;span&gt;&lt;/span&gt;</code></td><td>Generic <b>inline</b> element container – good for styling a short piece of text)</td></tr>
-                    </tbody>
-                </table>
-            </section>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Tag</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;div&gt; &lt;/div&gt;</code></td><td>Generic <strong>block</strong> element container (used for large sections of content)</td></tr>
+                            <tr><td><code>&lt;span&gt; &lt;/span&gt;</code></td><td>Generic <strong>inline</strong> element container – good for styling a short piece of text)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <section class="tag-section">
-                <h3>Headings and Paragraphs</h3>
-                <p>References: <a href="https://www.w3schools.com/html/html_headings.asp" target="_blank">Headings</a>, <a href="https://www.w3schools.com/html/html_paragraphs.asp" target="_blank">Paragraphs</a></p>
-                <table>
-                    <thead>
-                        <tr><th>Tag</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>&lt;h1&gt; &lt;/h1&gt;</code></td><td>Level 1 heading – larger and bolder (should be used once per page)</td></tr>
-                        <tr><td><code>&lt;h2&gt; &lt;/h2&gt;</code></td><td>Level 2 heading – large and bold</td></tr>
-                        <tr><td><code>&lt;p&gt; &lt;/p&gt;</code></td><td>A paragraph of text</td></tr>
-                        <tr><td><code>&lt;br&gt;</code></td><td>Line break</td></tr>
-                        <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule – a horizontal line across the page</td></tr>
-                    </tbody>
-                </table>
-            </section>
+            <!-- ACCORDION: Headings and Paragraphs -->
+            <button class="accordion" id="btn-headings">
+                Headings and Paragraphs
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>References: <a href="https://www.w3schools.com/html/html_headings.asp" target="_blank" style="color: var(--active-color);">Headings</a>, <a href="https://www.w3schools.com/html/html_paragraphs.asp" target="_blank" style="color: var(--active-color);">Paragraphs</a></p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Tag</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;h1&gt; &lt;/h1&gt;</code></td><td>Level 1 heading – larger and bolder (should be used once per page)</td></tr>
+                            <tr><td><code>&lt;h2&gt; &lt;/h2&gt;</code></td><td>Level 2 heading – large and bold</td></tr>
+                            <tr><td><code>&lt;p&gt; &lt;/p&gt;</code></td><td>A paragraph of text</td></tr>
+                            <tr><td><code>&lt;br&gt;</code></td><td>Line break</td></tr>
+                            <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule – a horizontal line across the page</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <section class="tag-section">
-                <h3>Text Formatting</h3>
-                <p>Reference: <a href="https://www.w3schools.com/html/html_formatting.asp" target="_blank">w3schools.com/html/html_formatting.asp</a></p>
+            <!-- ACCORDION: Text Formatting -->
+            <button class="accordion" id="btn-formatting">
+                Text Formatting
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Reference: <a href="https://www.w3schools.com/html/html_formatting.asp" target="_blank" style="color: var(--active-color);">w3schools.com/html/html_formatting.asp</a></p>
                 
-                <table>
-                    <thead>
-                        <tr><th>Tag</th><th>Effect</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>&lt;b&gt;</code> / <code>&lt;strong&gt;</code></td><td><b>Bold</b> / <strong>Strong Emphasis</strong></td><td>Makes text bold (<code>&lt;strong&gt;</code> implies greater importance).</td></tr>
-                        <tr><td><code>&lt;i&gt;</code> / <code>&lt;em&gt;</code></td><td><i>Italic</i> / <em>Emphasized</em></td><td>Makes text italic (<code>&lt;em&gt;</code> implies stress or emphasis).</td></tr>
-                        <tr><td><code>&lt;mark&gt;</code></td><td><mark>Highlighted</mark></td><td>Highlights a section of text.</td></tr>
-                        <tr><td><code>&lt;small&gt;</code></td><td><small>Smaller text</small></td><td>Renders text one size smaller.</td></tr>
-                        <tr><td><code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code></td><td><del>Deleted</del> / <ins>Inserted</ins></td><td>Shows text that has been deleted or inserted from a document.</td></tr>
-                        <tr><td><code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code></td><td>H<sub>2</sub>O / E=mc<sup>2</sup></td><td>Subscript (below the line) and Superscript (above the line).</td></tr>
-                    </tbody>
-                </table>
-                
-                <p style="margin-top: 15px;">**Code Example:**</p>
-                <pre><code><span class="syntax-tag">&lt;p&gt;</span>This is a <span class="syntax-tag">&lt;b&gt;</span>bold word<span class="syntax-tag">&lt;/b&gt;</span> and this is an <span class="syntax-tag">&lt;em&gt;</span>important phrase<span class="syntax-tag">&lt;/em&gt;</span>.<span class="syntax-tag">&lt;/p&gt;</span>
-<span class="syntax-tag">&lt;p&gt;</span>The final answer is <span class="syntax-tag">&lt;del&gt;</span>50<span class="syntax-tag">&lt;/del&gt;</span> <span class="syntax-tag">&lt;ins&gt;</span>42<span class="syntax-tag">&lt;/ins&gt;</span>.<span class="syntax-tag">&lt;/p&gt;</span>
-<span class="syntax-tag">&lt;p&gt;</span>Water's formula is H<span class="syntax-tag">&lt;sub&gt;</span>2<span class="syntax-tag">&lt;/sub&gt;</span>O and squared means x<span class="syntax-tag">&lt;sup&gt;</span>2<span class="syntax-tag">&lt;/sup&gt;</span>.<span class="syntax-tag">&lt;/p&gt;</span>
-<span class="syntax-tag">&lt;p&gt;</span>Please <span class="syntax-tag">&lt;mark&gt;</span>highlight this key information<span class="syntax-tag">&lt;/mark&gt;</span> to study later.<span class="syntax-tag">&lt;/p&gt;</span></code></pre>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Tag</th><th>Effect</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;b&gt;</code> / <code>&lt;strong&gt;</code></td><td><b>Bold</b> / <strong>Strong Emphasis</strong></td><td>Makes text bold (<code>&lt;strong&gt;</code> implies greater importance).</td></tr>
+                            <tr><td><code>&lt;i&gt;</code> / <code>&lt;em&gt;</code></td><td><i>Italic</i> / <em>Emphasized</em></td><td>Makes text italic (<code>&lt;em&gt;</code> implies stress or emphasis).</td></tr>
+                            <tr><td><code>&lt;mark&gt;</code></td><td><mark>Highlighted</mark></td><td>Highlights a section of text.</td></tr>
+                            <tr><td><code>&lt;small&gt;</code></td><td><small>Smaller text</small></td><td>Renders text one size smaller.</td></tr>
+                            <tr><td><code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code></td><td><del>Deleted</del> / <ins>Inserted</ins></td><td>Shows text that has been deleted or inserted from a document.</td></tr>
+                            <tr><td><code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code></td><td>H<sub>2</sub>O / E=mc<sup>2</sup></td><td>Subscript (below the line) and Superscript (above the line).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
                 
                 <p style="margin-top: 15px;"><b>Live Demo:</b></p>
                 <div class="formatting-demo-container">
@@ -407,65 +411,77 @@
                     <p>Water's formula is H<sub>2</sub>O and squared means x<sup>2</sup>.</p>
                     <p>Please <mark>highlight this key information</mark> to study later.</p>
                 </div>
-            </section>
-            
-            <section class="tag-section">
-                <h3>Links and Anchors</h3>
-                <p>Reference: <a href="https://www.w3schools.com/html/html_links.asp" target="_blank">w3schools.com/html/html_links.asp</a></p>
-                <table>
-                    <thead>
-                        <tr><th>Tag</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>&lt;a href="page.html"&gt;Display Text&lt;/a&gt;</code></td><td>Basic link</td></tr>
-                        <tr><td><code>&lt;a name="anchor-name"&gt;</code></td><td>An anchor point inside a document</td></tr>
-                        <tr><td><code>&lt;a href="#anchor-name"&gt;Display Text&lt;/a&gt;</code></td><td>A link to an anchor point inside the same webpage</td></tr>
-                    </tbody>
-                </table>
-            </section>
+            </div>
 
-            <section class="tag-section">
-                <h3>Images</h3>
-                <p>Reference: <a href="https://www.w3schools.com/html/html_images.asp" target="_blank">w3schools.com/html/html_images.asp</a></p>
-                <table>
-                    <thead>
-                        <tr><th>Tag</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>&lt;img src="myimage.png"&gt;</code></td><td>Show an image that is stored in the same folder as the webpage</td></tr>
-                        <tr><td><code>&lt;img src="http://www.website.com/image.jpg"&gt;</code></td><td>Show an image that is stored on another website</td></tr>
-                        <tr><td><code>&lt;img src="myimage.png" width="100px" height="100px"&gt;</code></td><td>Show an image with a specified width and/or height. Units can be <code>px</code> or <code>%</code> (100% would be the entire width of the container).</td></tr>
-                    </tbody>
-                </table>
-            </section>
+            <!-- ACCORDION: Links and Anchors -->
+            <button class="accordion" id="btn-links">
+                Links and Anchors
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Reference: <a href="https://www.w3schools.com/html/html_links.asp" target="_blank" style="color: var(--active-color);">w3schools.com/html/html_links.asp</a></p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Tag</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;a href="page.html"&gt;Display Text&lt;/a&gt;</code></td><td>Basic link</td></tr>
+                            <tr><td><code>&lt;a name="anchor-name"&gt;</code></td><td>An anchor point inside a document</td></tr>
+                            <tr><td><code>&lt;a href="#anchor-name"&gt;Display Text&lt;/a&gt;</code></td><td>A link to an anchor point inside the same webpage</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <section class="tag-section">
-                <h3>Lists</h3>
-                <p>Reference: <a href="https://www.w3schools.com/html/html_lists.asp" target="_blank">w3schools.com/html/html_lists.asp</a></p>
+            <!-- ACCORDION: Images -->
+            <button class="accordion" id="btn-images">
+                Images
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Reference: <a href="https://www.w3schools.com/html/html_images.asp" target="_blank" style="color: var(--active-color);">w3schools.com/html/html_images.asp</a></p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Tag</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;img src="myimage.png"&gt;</code></td><td>Show an image that is stored in the same folder as the webpage</td></tr>
+                            <tr><td><code>&lt;img src="http://www.website.com/image.jpg"&gt;</code></td><td>Show an image that is stored on another website</td></tr>
+                            <tr><td><code>&lt;img src="myimage.png" width="100px" height="100px"&gt;</code></td><td>Show an image with a specified width and/or height. Units can be <code>px</code> or <code>%</code> (100% would be the entire width of the container).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: Lists -->
+            <button class="accordion" id="btn-lists">
+                Lists
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Reference: <a href="https://www.w3schools.com/html/html_lists.asp" target="_blank" style="color: var(--active-color);">w3schools.com/html/html_lists.asp</a></p>
                 
                 <div style="display: flex; gap: 30px; flex-wrap: wrap;">
-                    <div style="flex-basis: 45%;">
+                    <div style="flex-basis: 45%; min-width: 250px;">
                         <p><strong>Unordered List Example:</strong> <code>&lt;ul&gt;</code></p>
                         <pre><code><span class="syntax-tag">&lt;ul&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Coffee<span class="syntax-tag">&lt;/li&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Tea<span class="syntax-tag">&lt;/li&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Milk<span class="syntax-tag">&lt;/li&gt;</span>
 <span class="syntax-tag">&lt;/ul&gt;</span></code></pre>
-                        <ul class="list-example">
+                        <ul class="list-disc list-inside mt-2" style="list-style-type: disc; margin-left: 20px;">
                             <li>Coffee</li>
                             <li>Tea</li>
                             <li>Milk</li>
                         </ul>
                         <p class="list-description">Unordered list. Each list item will get a bullet.</p>
                     </div>
-                    <div style="flex-basis: 45%;">
+                    <div style="flex-basis: 45%; min-width: 250px;">
                         <p><strong>Ordered List Example:</strong> <code>&lt;ol&gt;</code></p>
                         <pre><code><span class="syntax-tag">&lt;ol&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Coffee<span class="syntax-tag">&lt;/li&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Tea<span class="syntax-tag">&lt;/li&gt;</span>
   <span class="syntax-tag">&lt;li&gt;</span>Milk<span class="syntax-tag">&lt;/li&gt;</span>
 <span class="syntax-tag">&lt;/ol&gt;</span></code></pre>
-                        <ol class="list-example">
+                        <ol class="list-decimal list-inside mt-2" style="list-style-type: decimal; margin-left: 20px;">
                             <li>Coffee</li>
                             <li>Tea</li>
                             <li>Milk</li>
@@ -473,197 +489,339 @@
                         <p class="list-description">Ordered list. Each list item will be numbered.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-        </section>
-        
-        <hr>
-
-        <section id="css-reference">
-            <h2>CSS Reference</h2>
-
-            <section class="css-section">
-                <h3>CSS Selectors</h3>
-                <table>
-                    <thead>
-                        <tr><th>CSS Syntax</th><th>Description</th><th>Example</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>tag { }</code></td><td>Style all the elements that use that tag (e.g., all <code>&lt;a&gt;</code> elements)</td><td><code><span class="syntax-tag">a</span> <span class="syntax-punct">{</span> <span class="syntax-prop">color</span>: <span class="syntax-string">white</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
-                        <tr><td><code>#name { }</code></td><td>Style the element with the unique <b><code>id="name"</code></b> attribute</td><td><code><span class="syntax-selector">#main-heading</span> <span class="syntax-punct">{</span> <span class="syntax-prop">color</span>: <span class="syntax-string">blue</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
-                        <tr><td><code>.class-name { }</code></td><td>Style every element with the <b><code>class="class-name"</code></b> attribute</td><td><code><span class="syntax-selector">.button</span> <span class="syntax-punct">{</span> <span class="syntax-prop">background-color</span>: <span class="syntax-string">darkgray</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
-                    </tbody>
-                </table>
-            </section>
-            
-            <section class="css-section">
-                <h3>The CSS Box Model</h3>
-                <p>The Box Model is the most important concept in CSS. Every HTML element is treated as a rectangular **box**, and this model explains how space is added around its content. Understanding this is key to sizing and positioning elements.</p>
+            <!-- ACCORDION: Tables (NEWLY ADDED) -->
+            <button class="accordion" id="btn-tables">
+                Tables
+                <span class="icon"></span>
+            </button>
+            <div class="panel">
+                <p>Reference: <a href="https://www.w3schools.com/html/html_tables.asp" target="_blank" style="color: var(--active-color);">w3schools.com/html/html_tables.asp</a></p>
+                <p>Tables are used to display data in rows and columns. Use `&lt;thead&gt;` for headers and `&lt;tbody&gt;` for the main data.</p>
                 
-                
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Tag</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>&lt;table&gt;&lt;/table&gt;</code></td><td>The wrapper for the entire table.</td></tr>
+                            <tr><td><code>&lt;thead&gt;&lt;/thead&gt;</code></td><td>The container for the table header row(s).</td></tr>
+                            <tr><td><code>&lt;tbody&gt;&lt;/tbody&gt;</code></td><td>The container for the main table body row(s).</td></tr>
+                            <tr><td><code>&lt;tr&gt;&lt;/tr&gt;</code></td><td>A table row.</td></tr>
+                            <tr><td><code>&lt;th&gt;&lt;/th&gt;</code></td><td>A table header cell (usually bold and centered).</td></tr>
+                            <tr><td><code>&lt;td&gt;&lt;/td&gt;</code></td><td>A table data cell.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Code Example:</b></p>
+                <pre><code><span class="syntax-tag">&lt;table&gt;</span>
+  <span class="syntax-tag">&lt;thead&gt;</span>
+    <span class="syntax-tag">&lt;tr&gt;</span>
+      <span class="syntax-tag">&lt;th&gt;</span>First Name<span class="syntax-tag">&lt;/th&gt;</span>
+      <span class="syntax-tag">&lt;th&gt;</span>Last Name<span class="syntax-tag">&lt;/th&gt;</span>
+      <span class="syntax-tag">&lt;th&gt;</span>Grade<span class="syntax-tag">&lt;/th&gt;</span>
+    <span class="syntax-tag">&lt;/tr&gt;</span>
+  <span class="syntax-tag">&lt;/thead&gt;</span>
+  <span class="syntax-tag">&lt;tbody&gt;</span>
+    <span class="syntax-tag">&lt;tr&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>Jane<span class="syntax-tag">&lt;/td&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>Doe<span class="syntax-tag">&lt;/td&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>A<span class="syntax-tag">&lt;/td&gt;</span>
+    <span class="syntax-tag">&lt;/tr&gt;</span>
+    <span class="syntax-tag">&lt;tr&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>John<span class="syntax-tag">&lt;/td&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>Smith<span class="syntax-tag">&lt;/td&gt;</span>
+      <span class="syntax-tag">&lt;td&gt;</span>B+<span class="syntax-tag">&lt;/td&gt;</span>
+    <span class="syntax-tag">&lt;/tr&gt;</span>
+  <span class="syntax-tag">&lt;/tbody&gt;</span>
+<span class="syntax-tag">&lt;/table&gt;</span></code></pre>
+
+                <p style="margin-top: 15px;"><b>Live Demo:</b></p>
+                <div class="table-container">
+                    <table style="margin-top: 0;"> <!-- Re-using table styles, but need to reset margin-top -->
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jane</td>
+                                <td>Doe</td>
+                                <td>A</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Smith</td>
+                                <td>B+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================================== -->
+        <!-- MAIN SECTION: CSS REFERENCE (STATIC HEADING) -->
+        <!-- ============================================== -->
+        <h2 class="static-heading">CSS Reference</h2>
+        <div class="content-container">
+
+            <!-- ACCORDION: CSS Selectors -->
+            <button class="accordion active" id="btn-selectors">
+                CSS Selectors
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel show">
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>CSS Syntax</th><th>Description</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>tag { }</code></td><td>Style all the elements that use that tag (e.g., all <code>&lt;a&gt;</code> elements)</td><td><code><span class="syntax-tag">a</span> <span class="syntax-punct">{</span> <span class="syntax-prop">color</span>: <span class="syntax-string">white</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
+                            <tr><td><code>#name { }</code></td><td>Style the element with the unique <b><code>id="name"</code></b> attribute</td><td><code><span class="syntax-selector">#main-heading</span> <span class="syntax-punct">{</span> <span class="syntax-prop">color</span>: <span class="syntax-string">blue</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
+                            <tr><td><code>.class-name { }</code></td><td>Style every element with the <b><code>class="class-name"</code></b> attribute</td><td><code><span class="syntax-selector">.button</span> <span class="syntax-punct">{</span> <span class="syntax-prop">background-color</span>: <span class="syntax-string">darkgray</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td></tr>
+                            <tr>
+                                <td><code>.class tag { }</code></td>
+                                <td>Descendant selector. Styles any <code>&lt;tag&gt;</code> that is <i>inside</i> an element with <code>class="class"</code>.</td>
+                                <td><code><span class="syntax-selector">.container</span> <span class="syntax-tag">p</span> <span class="syntax-punct">{</span> <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span> <span class="syntax-punct">}</span></code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: General CSS Properties -->
+            <button class="accordion" id="btn-general-props">
+                General CSS Properties
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>These are general properties used for styling text and layout, outside of the core Box Model dimensions.</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Examples</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>color:</code></td><td>Sets the text color (named color, <strong>rgb</strong> value, or <strong>hex</strong> value)</td><td><code><span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span></code>, f<code><span class="syntax-prop">color</span>: <span class="syntax-string">rgb(128, 128, 255)</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">color</span>: <span class="syntax-string">#12A3B7</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>background-color:</code></td><td>Sets the background color</td><td><code><span class="syntax-prop">background-color</span>: <span class="syntax-string">white</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>font-family:</code></td><td>Set a font. Must be a name the browser will recognize</td><td><code><span class="syntax-prop">font-family</span>: <span class="syntax-string">Courier</span></code></td></tr>
+                            <tr><td><code>font-size:</code></td><td>Sets the size of the font. Usually measured in <code>px</code> or <code>pt</code></td><td><code><span class="syntax-prop">font-size</span>: <span class="syntax-string">36px</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>text-align:</code></td><td>Determines how text is aligned inside an element</td><td><code><span class="syntax-prop">text-align</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>box-shadow:</code></td><td>Creates a shadow below the element</td><td><code><span class="syntax-prop">box-shadow</span>: <span class="syntax-string">0px 8px 20px darkgray</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>display:</code></td><td>Adjusts how the HTML elements inside the container are positioned (e.g., <code>block</code>, <code>inline</code>, <code>flex</code>)</td><td><code><span class="syntax-prop">display</span>: <span class="syntax-string">flex</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>text-decoration:</code></td><td>Sets the underline, strike-through, etc. of the text (e.g., <code>underline</code>, <code>none</code>)</td><td><code><span class="syntax-prop">text-decoration</span>: <span class="syntax-string">none</span><span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: The CSS Box Model -->
+            <button class="accordion" id="btn-box-model">
+                The CSS Box Model
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>The <strong>Box Model</strong> is the most important concept in CSS. Every HTML element is treated as a rectangular <strong>box</strong>, and this model explains how space is added around its content. Understanding this is key to sizing and positioning elements.</p>
                 
                 <div class="box-model-demo">
                     <div class="box-model-content">
                         Content (width/height)<br>
                         (Space inside the Padding)
                     </div>
-                    <p style="margin: 10px 0; font-weight: bold; font-size: 0.9em;">Padding (Space inside Border)</p>
+                    <p style="margin: 10px 0; font-weight: bold; font-size: 0.9em; color: var(--active-color);">Padding (Space inside Border)</p>
                 </div>
-                <p>The **Content** is the actual text or image.<br>
-                The **Padding** is the space *inside* the element, between the content and the border.<br>
-                The **Border** is the line that surrounds the padding and content.<br>
-                The **Margin** is the clear space *outside* the element, separating it from other elements.</p>
+                <p>The <strong>Content</strong> is the actual text or image.<br>
+                The <strong>Padding</strong> is the space <i>inside</i> the element, between the content and the border.<br>
+                The <strong>Border</strong> is the line that surrounds the padding and content.<br>
+                The <strong>Margin</strong> is the clear space <i>outside</i> the element, separating it from other elements.</p>
+
+                <h4>Box Model Properties</h4>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Examples</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>width:</code> and <code>height:</code></td><td>Sets the <strong>size of the content box</strong>. Units can be <strong><code>px</code></strong>, <strong><code>%</code></strong>, <strong><code>vw</code></strong>, <strong><code>vh</code></strong></td><td><code><span class="syntax-prop">width</span>: <span class="syntax-string">100%</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">height</span>: <span class="syntax-string">50vh</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>max-width:</code> and <code>max-height:</code></td><td>Sets the <strong>maximum</strong> width or height for elements. Prevents growth beyond this size.</td><td><code><span class="syntax-prop">max-width</span>: <span class="syntax-string">200px</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>min-width:</code> and <code>min-height:</code></td><td>Sets the <strong>minimum</strong> width or height for elements. Prevents shrinking below this size.</td><td><code><span class="syntax-prop">min-width</span>: <span class="syntax-string">100px</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>padding:</code></td><td>Sets the padding or space around the <strong>content inside</strong> the background.</td><td><code><span class="syntax-prop">padding</span>: <span class="syntax-string">10px</span></code></td></tr>
+                            <tr><td><code>border:</code></td><td>Sets the border size, style, and color.</td><td><code><span class="syntax-prop">border</span>: <span class="syntax-string">4px solid blue</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>border-radius:</code></td><td>Rounds the corners of the <strong>border</strong>.</td><td><code><span class="syntax-prop">border-radius</span>: <span class="syntax-string">10px</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>margin:</code></td><td>Set the space around the element, <strong>outside</strong> of the background.</td><td><code><span class="syntax-prop">margin</span>: <span class="syntax-string">20px</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: CSS Units -->
+            <button class="accordion" id="btn-units">
+                CSS Units (Sizing and Spacing)
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>CSS properties rely on units of measurement to define size, distance, and spacing. These units are split into two main types: absolute units (fixed size) and relative units (based on another element or the viewport).</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Unit</th><th>Description</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>px</code> (Pixels)</td><td>An <strong>absolute unit</strong>. One pixel is one physical dot on the screen. Not ideal for responsiveness as it doesn't scale.</td><td><code><span class="syntax-prop">width</span>: <span class="syntax-string">200px</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>%</code> (Percentage)</td><td>A <strong>relative unit</strong> based on the size of the <strong>parent element</strong>. Often used for fluid widths.</td><td><code><span class="syntax-prop">width</span>: <span class="syntax-string">50%</span><span class="syntax-punct">;</span></code> (50% of the parent's width)</td></tr>
+                            <tr><td><code>em</code></td><td>A <strong>relative unit</strong> based on the <strong>font-size of the element's parent</strong>. Scales well if the parent's font changes.</td><td><code><span class="syntax-prop">padding</span>: <span class="syntax-string">1.5em</span><span class="syntax-punct">;</span></code> (1.5 times the parent's font size)</td></tr>
+                            <tr><td><code>vh</code> (Viewport Height)</td><td>A <strong>relative unit</strong> equal to <strong>1% of the viewport (browser window) height</strong>. Great for elements that need to fill the screen vertically.</td><td><code><span class="syntax-prop">height</span>: <span class="syntax-string">100vh</span><span class="syntax-punct">;</span></code> (Full screen height)</td></tr>
+                            <tr><td><code>vw</code> (Viewport Width)</td><td>A <strong>relative unit</strong> equal to <strong>1% of the viewport (browser window) width</strong>. Useful for making elements or text size scale with the screen width.</td><td><code><span class="syntax-prop">font-size</span>: <span class="syntax-string">5vw</span><span class="syntax-punct">;</span></code> (5% of the screen width)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: CSS Flex Properties -->
+            <button class="accordion" id="btn-flex-props">
+                CSS Flex Properties
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Used when <code>display: flex;</code> is set on a container. For a good flex property reference: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" style="color: var(--active-color);">CSS-Tricks Flexbox Guide</a>.</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Examples</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>display: flex;</code></td><td>Sets the element to display its contents using flex properties</td><td>-</td></tr>
+                            <tr><td><code>flex-direction:</code></td><td>Determines whether elements should be arranged horizontally or vertically</td><td><code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">row</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">column</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>justify-content:</code></td><td>Determines how elements are aligned along the <strong>main axis</strong> (horizontal/vertical)</td><td><code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">space-between</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <strong>cross axis</strong> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, Warning: <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>flex-wrap:</code></td><td>Determines if the container will expand to a new line when it runs out of room when it runs out of room</td><td><code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACCORDION: Background Images and Gradients -->
+            <button class="accordion" id="btn-backgrounds">
+                CSS Background Images and Gradients
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>These properties allow you to set images or color gradients as the background of any element and control how they are displayed and scaled.</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Examples</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>background-image:</code></td><td>Specifies the path to an image file, often a URL or gradient.</td><td><code><span class="syntax-prop">background-image</span>: <span class="syntax-tag">url</span>(<span class="syntax-string">"image.jpg"</span>)<span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">background-image</span>: <span class="syntax-tag">linear-gradient</span>(...)<span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>linear-gradient()</code></td><td>Creates a smooth transition between two or more colors. Used with <code>background-image</code>.</td><td><code><span class="syntax-prop">background-image</span>: <span class="syntax-tag">linear-gradient</span>(<span class="syntax-string">to right, red, blue</span>)<span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>background-position:</code></td><td>Sets the starting position of a background image (defaults to top-left).</td><td><code><span class="syntax-prop">background-position</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">background-position</span>: <span class="syntax-string">50% 50%</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>background-size:</code></td><td>Defines how the background image should be scaled relative to the container.</td><td><code><span class="syntax-prop">background-size</span>: <span class="syntax-string">cover</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">background-size</span>: <span class="syntax-string">contain</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">background-size</span>: <span class="syntax-string">100% 100%</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>background-repeat:</code></td><td>Determines if and how a background image is repeated.</td><td><code><span class="syntax-prop">background-repeat</span>: <span class="syntax-string">no-repeat</span><span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
                 
-            </section>
-
-            <section class="css-section">
-                <h3>CSS Properties</h3>
-                <p>For a full list see <a href="https://www.w3schools.com/css/default.asp" target="_blank">w3schools.com/css/default.asp</a></p>
-                <table>
-                    <thead>
-                        <tr><th>Property</th><th>Description</th><th>Examples</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>color:</code></td><td>Sets the text color (named color, <b>rgb</b> value, or <b>hex</b> value)</td><td><code><span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">color</span>: <span class="syntax-string">rgb(128, 128, 255)</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">color</span>: <span class="syntax-string">#12A3B7</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>background-color:</code></td><td>Sets the background color</td><td><code><span class="syntax-prop">background-color</span>: <span class="syntax-string">white</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>width:</code> and <code>height:</code></td><td>Sets the width and height. Units can be <b><code>px</code></b>, <b><code>%</code></b>, <b><code>vw</code></b>, <b><code>vh</code></b></td><td><code><span class="syntax-prop">width</span>: <span class="syntax-string">100%</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">height</span>: <span class="syntax-string">50vh</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>max-width:</code> and <code>max-height:</code></td><td>Sets the maximum height or width for elements</td><td><code><span class="syntax-prop">max-width</span>: <span class="syntax-string">200px</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>font-family:</code></td><td>Set a font. Must be a name the browser will recognize</td><td><code><span class="syntax-prop">font-family</span>: <span class="syntax-string">Courier</span></code></td></tr>
-                        <tr><td><code>font-size:</code></td><td>Sets the size of the font. Usually measured in <code>px</code> or <code>pt</code></td><td><code><span class="syntax-prop">font-size</span>: <span class="syntax-string">36px</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>text-align:</code></td><td>Determines how text is aligned inside an element</td><td><code><span class="syntax-prop">text-align</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>padding:</code></td><td>Sets the padding or space around the <b>content inside</b> the background</td><td><code><span class="syntax-prop">padding</span>: <span class="syntax-string">10px</span></code></td></tr>
-                        <tr><td><code>margin:</code></td><td>Set the space around the element, <b>outside</b> of the background</td><td><code><span class="syntax-prop">margin</span>: <span class="syntax-string">20px</span></code></td></tr>
-                        <tr><td><code>border:</code></td><td>Sets the border size, style, and color</td><td><code><span class="syntax-prop">border</span>: <span class="syntax-string">4px solid blue</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>border-radius:</code></td><td>Rounds the corners of the border</td><td><code><span class="syntax-prop">border-radius</span>: <span class="syntax-string">10px</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>box-shadow:</code></td><td>Creates a shadow below the element</td><td><code><span class="syntax-prop">box-shadow</span>: <span class="syntax-string">0px 8px 20px darkgray</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>display:</code></td><td>Adjusts how the HTML elements inside the container are positioned (e.g., <code>block</code>, <code>inline</code>, <code>flex</code>)</td><td><code><span class="syntax-prop">display</span>: <span class="syntax-string">flex</span><span class="syntax-punct">;</span></code></td></tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="css-section">
-                <h3>CSS Flex Properties</h3>
-                <p>Used when <code>display: flex;</code> is set on a container. For a good flex property reference: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS-Tricks Flexbox Guide</a>.</p>
-                <table>
-                    <thead>
-                        <tr><th>Property</th><th>Description</th><th>Examples</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>display: flex;</code></td><td>Sets the element to display its contents using flex properties</td><td>-</td></tr>
-                        <tr><td><code>flex-direction:</code></td><td>Determines whether elements should be arranged horizontally or vertically</td><td><code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">row</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">column</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>justify-content:</code></td><td>Determines how elements are aligned along the <b>main axis</b> (horizontal/vertical)</td><td><code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">space-between</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <b>cross axis</b> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>flex-wrap:</code></td><td>Determines if the container will expand to a new line when it runs out of room when it runs out of room</td><td><code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span></code></td></tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="css-section">
-                <h3>CSS Filters (The <code>filter</code> property)</h3>
-                <p>Filters let you apply visual effects to elements, like blur, saturation, or color shift. They are often used for image effects or interactive elements.</p>
-                <table>
-                    <thead>
-                        <tr><th>Function</th><th>Description</th><th>Example</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>blur()</code></td><td>Blurs the element by a specified radius.</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">blur</span>(<span class="syntax-string">5px</span>)<span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>grayscale()</code></td><td>Converts the color to shades of gray (0% to 100%).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">grayscale</span>(<span class="syntax-string">100%</span>)<span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>saturate()</code></td><td>Adjusts color saturation (100% is normal, 200% is double).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">saturate</span>(<span class="syntax-string">150%</span>)<span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>drop-shadow()</code></td><td>Applies a shadow to the element (similar to <code>box-shadow</code> but applied to the content shape).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">drop-shadow</span>(<span class="syntax-string">0 0 10px black</span>)<span class="syntax-punct">;</span></code></td></tr>
-                    </tbody>
-                </table>
-
-                <p style="margin-top: 15px;"><b>Demo:</b> Hover over the image to apply a <b>grayscale and blur</b> filter, and a subtle <b>drop-shadow</b> effect.</p>
-                <div class="filter-demo-container">
-                    <img class="filter-demo-image" src="https://picsum.photos/id/1/200/400" alt="Placeholder image for filter demo">
+                <p style="margin-top: 15px;"><b>Demo:</b></p>
+                <div class="background-demo-box">
+                    Background Image Demo
                 </div>
-                <pre><code><span class="syntax-selector">.filter-demo-container:hover</span> <span class="syntax-selector">.filter-demo-image</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">filter</span>: <span class="syntax-tag">grayscale</span>(<span class="syntax-string">100%</span>) <span class="syntax-tag">blur</span>(<span class="syntax-string">2px</span>)<span class="syntax-punct">;</span>
-<span class="syntax-punct">}</span></code></pre>
-            </section>
+            </div>
 
-            <section class="css-section">
-                <h3>CSS Transitions (Smooth State Changes)</h3>
+            <!-- ACCORDION: CSS Filters -->
+            <button class="accordion" id="btn-filters">
+                CSS Filters
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Filters let you apply visual effects to elements, like blur, saturation, or color shift. They are often used for image effects or interactive elements.</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Function</th><th>Description</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>blur()</code></td><td>Blurs the element by a specified radius.</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">blur</span>(<span class="syntax-string">5px</span>)<span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>grayscale()</code></td><td>Converts the color to shades of gray (0% to 100%).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">grayscale</span>(<span class="syntax-string">100%</span>)<span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>saturate()</code></td><td>Adjusts color saturation (100% is normal, 200% is double).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">saturate</span>(<span class="syntax-string">150%</span>)<span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>drop-shadow()</code></td><td>Applies a shadow to the element (similar to <code>box-shadow</code> but applied to the content shape).</td><td><code><span class="syntax-prop">filter</span>: <span class="syntax-tag">drop-shadow</span>(<span class="syntax-string">0 0 10px black</span>)<span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Demo:</b> Hover over the image to apply a <strong>grayscale and blur</strong> filter, and a subtle <strong>drop-shadow</strong> effect.</p>
+                <div class="filter-demo-container">
+                    <img class="filter-demo-image" src="https://picsum.photos/id/15/200/400" alt="Placeholder image for filter demo">
+                </div>
+            </div>
+
+            <!-- ACCORDION: CSS Transitions -->
+            <button class="accordion" id="btn-transitions">
+                CSS Transitions (Smooth State Changes)
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
                 <p>Transitions create a smooth, timed animation when a CSS property value changes (e.g., on hover or active states).</p>
-                <table>
-                    <thead>
-                        <tr><th>Property</th><th>Description</th><th>Example</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>transition:</code></td><td><b>Shortcut</b> for all transition properties. The <b>duration</b> is the only required value.</td><td><code><span class="syntax-prop">transition</span>: <span class="syntax-string">1s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-prop">transition</span>: <span class="syntax-string">all 0.5s ease</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>transition-property</code></td><td>The CSS property name(s) to animate. Use <code>all</code> for everything.</td><td><code><span class="syntax-prop">transition-property</span>: <span class="syntax-string">background-color, transform</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>transition-duration</code></td><td>How long the transition should take (in seconds or milliseconds).</td><td><code><span class="syntax-prop">transition-duration</span>: <span class="syntax-string">0.5s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-string">500ms</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>transition-timing-function</code></td><td>The speed curve of the transition (e.g., <code>ease</code>, <code>linear</code>, <code>ease-in-out</code>).</td><td><code><span class="syntax-prop">transition-timing-function</span>: <span class="syntax-string">ease-in-out</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>transition-delay</code></td><td>How long to wait before the transition starts.</td><td><code><span class="syntax-prop">transition-delay</span>: <span class="syntax-string">0.2s</span><span class="syntax-punct">;</span></code></td></tr>
-                    </tbody>
-                </table>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>transition:</code></td><td><strong>Shortcut</strong> for all transition properties. The <strong>duration</strong> is the only required value.</td><td><code><span class="syntax-prop">transition</span>: <span class="syntax-string">1s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-prop">transition</span>: <span class="syntax-string">all 0.5s ease</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>transition-property</code></td><td>The CSS property name(s) to animate. Use <code>all</code> for everything.</td><td><code><span class="syntax-prop">transition-property</span>: <span class="syntax-string">background-color, transform</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>transition-duration</code></td><td>How long the transition should take (in seconds or milliseconds).</td><td><code><span class="syntax-prop">transition-duration</span>: <span class="syntax-string">0.5s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-string">500ms</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>transition-timing-function</code></td><td>The speed curve of the transition (e.g., <code>ease</code>, <code>linear</code>, <code>ease-in-out</code>).</td><td><code><span class="syntax-prop">transition-timing-function</span>: <span class="syntax-string">ease-in-out</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>transition-delay</code></td><td>How long to wait before the transition starts.</td><td><code><span class="syntax-prop">transition-delay</span>: <span class="syntax-string">0.2s</span><span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <p style="margin-top: 15px;"><b>Demo:</b> Hover over the box to see its background color and size smoothly <b>transition</b> over 0.5 seconds.</p>
+                <p style="margin-top: 15px;"><b>Demo:</b> Hover over the box to see its background color and size smoothly <strong>transition</strong> over 0.5 seconds.</p>
                 <div class="demo-box transition-demo">
                     Hover Me!
                 </div>
-                <pre><code><span class="syntax-selector">.transition-demo</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">transition-property</span>: <span class="syntax-string">background-color, transform</span><span class="syntax-punct">;</span>
-    <span class="syntax-prop">transition-duration</span>: <span class="syntax-string">0.5s</span><span class="syntax-punct">;</span>
-<span class="syntax-punct">}</span>
-<span class="syntax-selector">.transition-demo:hover</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">background-color</span>: <span class="syntax-keyword">var</span>(<span class="syntax-string">--primary-text-color</span>)<span class="syntax-punct">;</span> <span class="syntax-comment">/* Changes smoothly (using dark text color) */</span>
-    <span class="syntax-prop">transform</span>: <span class="syntax-tag">scale</span>(<span class="syntax-string">1.05</span>)<span class="syntax-punct">;</span> <span class="syntax-comment">/* Scales smoothly */</span>
-<span class="syntax-punct">}</span></code></pre>
-            </section>
-            
-            <section class="css-section">
-                <h3>CSS Animations (Repeating, Multi-Step Effects)</h3>
-                <p>Animations allow complex, multi-step motion without user interaction, defined using <code>@keyframes</code>.</p>
-                <table>
-                    <thead>
-                        <tr><th>Property</th><th>Description</th><th>Example</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>animation:</code></td><td><b>Shortcut</b> for all animation properties. The <b>name</b> and <b>duration</b> are required values.</td><td><code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s infinite</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>@keyframes</code></td><td>Defines the steps of the animation (e.g., <code>0%</code>/<code>from</code> to <code>100%</code>/<code>to</code>).</td><td><code><span class="syntax-keyword">@keyframes</span> <span class="syntax-tag">my-bounce</span> <span class="syntax-punct">{</span> ... <span class="syntax-punct">}</span></code></td></tr>
-                        <tr><td><code>animation-name</code></td><td>The name of the <code>@keyframes</code> rule to use.</td><td><code><span class="syntax-prop">animation-name</span>: <span class="syntax-string">bounce</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>animation-duration</code></td><td>How long one cycle of the animation takes.</td><td><code><span class="syntax-prop">animation-duration</span>: <span class="syntax-string">1.5s</span><span class="syntax-punct">;</span></code></td></tr>
-                        <tr><td><code>animation-iteration-count</code></td><td>How many times the animation should run (e.g., a number or <code>infinite</code>).</td><td><code><span class="syntax-prop">animation-iteration-count</span>: <span class="syntax-keyword">infinite</span><span class="syntax-punct">;</span></code></td></tr>
-                    </tbody>
-                </table>
+            </div>
 
-                <p style="margin-top: 15px;"><b>Demo:</b> This box is continuously running a simple <b>bounce</b> animation.</p>
+            <!-- ACCORDION: CSS Animations -->
+            <button class="accordion" id="btn-animations">
+                CSS Animations (Repeating, Multi-Step Effects)
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
+                <p>Animations allow complex, multi-step motion without user interaction, defined using <code>@keyframes</code>.</p>
+                <div class="table-container"> <!-- Added responsive container -->
+                    <table>
+                        <thead><tr><th>Property</th><th>Description</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>animation:</code></td><td><strong>Shortcut</strong> for all animation properties. The <strong>name</strong> and <strong>duration</strong> are required values.</td><td><code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s infinite</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>@keyframes</code></td><td>Defines the steps of the animation (e.g., <code>0%</code>/<code>from</code> to <code>100%</code>/<code>to</code>).</td><td><code><span class="syntax-keyword">@keyframes</span> <span class="syntax-tag">my-bounce</span> <span class="syntax-punct">{</span> ... <span class="syntax-punct">}</span></code></td></tr>
+                            <tr><td><code>animation-name</code></td><td>The name of the <code>@keyframes</code> rule to use.</td><td><code><span class="syntax-prop">animation-name</span>: <span class="syntax-string">bounce</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>animation-duration</code></td><td>How long one cycle of the animation takes.</td><td><code><span class="syntax-prop">animation-duration</span>: <span class="syntax-string">1.5s</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>animation-iteration-count</code></td><td>How many times the animation should run (e.g., a number or <code>infinite</code>).</td><td><code><span class="syntax-prop">animation-iteration-count</span>: <span class="syntax-keyword">infinite</span><span class="syntax-punct">;</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Demo:</b> This box is continuously running a simple <strong>bounce</strong> animation.</p>
                 <div class="demo-box animation-demo">
                     I'm Animating!
                 </div>
-                <pre><code><span class="syntax-comment">/* Define the motion steps */</span>
-<span class="syntax-keyword">@keyframes</span> <span class="syntax-tag">bounce</span> <span class="syntax-punct">{</span>
-    <span class="syntax-string">0%</span>, <span class="syntax-string">100%</span> <span class="syntax-punct">{</span> <span class="syntax-prop">transform</span>: <span class="syntax-tag">translateY</span>(<span class="syntax-string">0</span>)<span class="syntax-punct">;</span> <span class="syntax-punct">}</span>
-    <span class="syntax-string">50%</span> <span class="syntax-punct">{</span> <span class="syntax-prop">transform</span>: <span class="syntax-tag">translateY</span>(<span class="syntax-string">-15px</span>)<span class="syntax-punct">;</span> <span class="syntax-punct">}</span>
-<span class="syntax-punct">}</span>
+            </div>
 
-<span class="syntax-selector">.animation-demo</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">animation-name</span>: <span class="syntax-string">bounce</span><span class="syntax-punct">;</span>
-    <span class="syntax-prop">animation-duration</span>: <span class="syntax-string">1.5s</span><span class="syntax-punct">;</span>
-    <span class="syntax-prop">animation-iteration-count</span>: <span class="syntax-keyword">infinite</span><span class="syntax-punct">;</span>
-<span class="syntax-punct">}</span></code></pre>
-            </section>
-
-            <section class="css-section">
-                <h3>CSS Tips/Tricks</h3>
-                
+            <!-- ACCORDION: CSS Tips/Tricks -->
+            <button class="accordion" id="btn-tips-tricks">
+                CSS Tips/Tricks
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
                 <h4>Centering elements</h4>
-                <p>To center a **block element** (e.g., a <code>&lt;div&gt;</code>) that has a defined <code>width</code>, you use margins, as explained in the Box Model section. For **inline elements** (like <code>&lt;a&gt;</code> or <code>&lt;img&gt;</code>), you must set <code>display: block;</code> first.</p>
+                <p>To center a <strong>block element</strong> (e.g., a <code>&lt;div&gt;</code>) that has a defined <code>width</code>, you use margins, as explained in the Box Model section. For <strong>inline elements</strong> (like <code>&lt;a&gt;</code> or <code>&lt;img&gt;</code>), you need to set <code>display: block;</code> first.</p>
                 <pre><code><span class="syntax-tag">selector</span> <span class="syntax-punct">{</span>
     <span class="syntax-prop">display</span>: <span class="syntax-string">block</span><span class="syntax-punct">;</span>
-    <span class="syntax-prop">width</span>: <span class="syntax-tag">fit-content</span><span class="syntax-punct">;</span> <span class="syntax-comment">/* Make the element only as wide as its content */</span>
+    <span class="syntax-prop">width</span>: <span class="syntax-tag">fit-content</span><span class="syntax-punct">;</span>
     <span class="syntax-prop">margin-left</span>: <span class="syntax-keyword">auto</span><span class="syntax-punct">;</span>
     <span class="syntax-prop">margin-right</span>: <span class="syntax-keyword">auto</span><span class="syntax-punct">;</span>
 <span class="syntax-punct">}</span></code></pre>
 
                 <h4>Select Child Elements (Descendant Selector)</h4>
-                <p>Use a <b>space</b> between two selectors to target an element (the child) that is nested anywhere inside another element (the parent). This is useful for styling elements in a specific area of your page without using a class name on the child.</p>
+                <p>Use a <strong>space</strong> between two selectors to target an element (the child) that is nested anywhere inside another element (the parent). This is useful for styling elements in a specific area of your page without using a class name on the child.</p>
                 <pre><code><span class="syntax-comment">/* Styles any &lt;h1&gt; that is inside an element with class "my-class" */</span>
 <span class="syntax-selector">.my-class</span> <span class="syntax-tag">h1</span> <span class="syntax-punct">{</span> 
-    <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span> 
-    <span class="syntax-prop">border-bottom</span>: <span class="syntax-string">2px solid red</span><span class="syntax-punct">;</span>
-<span class="syntax-punct">}</span></code></pre>
+                    <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span> 
+                    <span class="syntax-prop">border-bottom</span>: <span class="syntax-string">2px solid red</span><span class="syntax-punct">;</span>
+                <span class="syntax-punct">}</span></code></pre>
 
                 <h4>Remove default margin</h4>
                 <p>Elements like <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code> have default top/bottom margin. Set <code>margin: 0px;</code> to remove it.</p>
@@ -672,25 +830,56 @@
 <span class="syntax-punct">}</span></code></pre>
 
                 <h4>Give multiple selectors the same style</h4>
-                <p>Separate selectors with a <b>comma</b> to apply the same styles to all of them.</p>
+                <p>Separate selectors with a <strong>comma</strong> to apply the same styles to all of them.</p>
                 <pre><code><span class="syntax-tag">h1</span><span class="syntax-punct">,</span> <span class="syntax-selector">#title</span><span class="syntax-punct">,</span> <span class="syntax-tag">p</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">background-color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span>
+    <span class="syntax-prop">background-color</span>: <span class="string">red</span><span class="syntax-punct">;</span>
 <span class="syntax-punct">}</span></code></pre>
 
                 <h4>Change look when element is hovered</h4>
-                <p>Use the <b><code>selector:hover</code></b> pseudo-class to apply different styles when the element is hovered over with a mouse pointer.</p>
+                <p>Use the <strong><code>selector:hover</code></strong> pseudo-class to apply different styles when the element is hovered over with a mouse pointer.</p>
                 <pre><code><span class="syntax-tag">a</span><span class="syntax-selector">:hover</span> <span class="syntax-punct">{</span>
-    <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span>
-    <span class="syntax-prop">text-decoration</span>: <span class="syntax-string">underline</span><span class="syntax-punct">;</span>
-<span class="syntax-punct">}</span></code></pre>
-            </section>
-        </section>
+                    <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span>
+                    <span class="syntax-prop">text-decoration</span>: <span class="syntax-string">underline</span><span class="syntax-punct">;</span>
+                <span class="syntax-punct">}</span></code></pre>
+            </div>
+        </div>
 
     </main>
 
     <footer>
-        <p>This document is intended as a high school class reference.</p>
+        <p style="text-align: center; margin-top: 40px; font-size: 0.9em; color: var(--secondary-text-color);">This document is intended as a high school class reference.</p>
     </footer>
 
+    <script>
+        /**
+         * JavaScript for Collapsible/Accordion Functionality
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const accButtons = document.getElementsByClassName("accordion");
+
+            // Open the first accordion in each main section (HTML Structural Tags and CSS Selectors)
+            // Note: Since we have two 'active' classes set in the HTML for the first item in in each major group,
+            // this loop will handle closing/opening the rest.
+
+            for (let i = 0; i < accButtons.length; i++) {
+                accButtons[i].addEventListener("click", function() {
+                    // Toggle the 'active' class on the button itself
+                    this.classList.toggle("active");
+
+                    // Get the content panel, which is the immediate next sibling element
+                    const panel = this.nextElementSibling;
+                    
+                    // Toggle the 'show' class on the panel to trigger the max-height transition
+                    if (panel.classList.contains('show')) {
+                        // Collapse the panel
+                        panel.classList.remove('show');
+                    } else {
+                        // Expand the panel
+                        panel.classList.add('show');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

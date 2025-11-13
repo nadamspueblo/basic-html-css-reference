@@ -254,7 +254,7 @@
             line-height: 1.6;
         }
 
-        /* --- NEW STYLES FOR POSITION DEMO --- */
+        /* --- STYLES FOR POSITION DEMO --- */
         .position-demo-container {
             position: relative; /* This is the anchor for 'absolute' positioning */
             height: 300px;
@@ -320,7 +320,62 @@
             /* To create scroll content for sticky */
             margin-bottom: 10px;
         }
-        /* --- END OF POSITION DEMO STYLES --- */
+
+        /* --- NEW STYLES FOR FLEX DEMO --- */
+        .flex-demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: var(--active-primary-bg-color);
+            border-radius: 6px;
+            justify-content: center;
+        }
+        .flex-demo-controls div {
+            display: flex;
+            align-items: center;
+        }
+        .flex-demo-controls label {
+            font-weight: bold;
+            margin-right: 5px;
+            color: var(--primary-text-color);
+            font-size: 0.9em;
+        }
+        .flex-demo-controls select {
+            font-family: 'Sofia Sans', sans-serif;
+            border: 1px solid var(--active-color);
+            border-radius: 4px;
+            padding: 5px;
+            font-size: 0.9em;
+        }
+        .flex-demo-container {
+            display: flex;
+            height: 450px;
+            border: 2px dashed var(--dark-text-color);
+            background-color: #f5f5ff;
+            border-radius: 6px;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+            /* Default values set in JS */
+        }
+        .flex-demo-box {
+            width: 80px;
+            min-width: 80px; /* Prevent shrinking too much */
+            height: 80px;
+            border-radius: 6px;
+            background-color: var(--active-color);
+            color: var(--primary-bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        /* --- END OF FLEX DEMO STYLES --- */
         
         /* 4. Accordion Specific Styles (applied to sub-sections) */
 
@@ -781,7 +836,7 @@
                     <div class="position-demo-box pos-absolute">position: absolute<br>(top: 40px, right: 10px)</div>
                     <p style="height: 200px;">More scrollable content...</p>
                 </div>
-
+                
                 <p style="margin-top: 15px;"><b>Example Code:</b></p>
                 <pre><code><span class="syntax-comment">/* The parent container *must* be positioned for 'absolute' to work predictably */</span>
 <span class="syntax-selector">.container</span> <span class="syntax-punct">{</span>
@@ -824,11 +879,83 @@
                             <tr><td><code>display: flex;</code></td><td>Sets the element to display its contents using flex properties</td><td>-</td></tr>
                             <tr><td><code>flex-direction:</code></td><td>Determines whether elements should be arranged horizontally or vertically</td><td><code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">row</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">column</span><span class="syntax-punct">;</span></code></td></tr>
                             <tr><td><code>justify-content:</code></td><td>Determines how elements are aligned along the <strong>main axis</strong> (horizontal/vertical)</td><td><code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">space-between</span><span class="syntax-punct">;</span></code></td></tr>
-                            <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <strong>cross axis</strong> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, Warning: GET <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
-                            <tr><td><code>flex-wrap:</code></td><td>Determines if the container will expand to a new line when it runs out of room when it runs out of room</td><td><code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <strong>cross axis</strong> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>flex-wrap:</code></td><td>Determines if the container will wrap to a new line when it runs out of room.</td><td><code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">nowrap</span><span class="syntax-punct">;</span></code></td></tr>
                         </tbody>
                     </table>
                 </div>
+
+                <!-- NEW FLEX DEMO ADDED HERE -->
+                <p style="margin-top: 15px;"><b>Live Demo:</b></p>
+                <p>Use the dropdowns to see how the flex properties change the layout of the blue boxes inside the dashed container.</p>
+
+                <div class="flex-demo-controls">
+                    <div>
+                        <label for="flex-direction">flex-direction:</label>
+                        <select id="flex-direction">
+                            <option value="row">row (default)</option>
+                            <option value="row-reverse">row-reverse</option>
+                            <option value="column">column</option>
+                            <option value="column-reverse">column-reverse</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="justify-content">justify-content:</label>
+                        <select id="justify-content">
+                            <option value="flex-start">flex-start (default)</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="center">center</option>
+                            <option value="space-between">space-between</option>
+                            <option value="space-around">space-around</option>
+                            <option value="space-evenly">space-evenly</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="align-items">align-items:</label>
+                        <select id="align-items">
+                            <option value="stretch">stretch (default)</option>
+                            <option value="flex-start">flex-start</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="center">center</option>
+                            <option value="baseline">baseline</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="flex-wrap">flex-wrap:</label>
+                        <select id="flex-wrap">
+                            <option value="nowrap">nowrap (default)</option>
+                            <option value="wrap">wrap</option>
+                            <option value="wrap-reverse">wrap-reverse</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex-demo-container" id="flex-demo-container">
+                    <div class="flex-demo-box">1</div>
+                    <div class="flex-demo-box">2</div>
+                    <div class="flex-demo-box">3</div>
+                    <div class="flex-demo-box" style="height: 100px; font-size: 1em;">4 (taller)</div>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Example Code:</b></p>
+                <pre><code><span class="syntax-comment">/* The Parent Container */</span>
+<span class="syntax-selector">.container</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">display</span>: <span class="syntax-string">flex</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">flex-direction</span>: <span class="syntax-string">row</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">justify-content</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">height</span>: <span class="syntax-string">300px</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span>
+
+<span class="syntax-comment">/* The Child Items */</span>
+<span class="syntax-selector">.item</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">width</span>: <span class="syntax-string">100px</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">height</span>: <span class="syntax-string">100px</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">margin</span>: <span class="syntax-string">10px</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span></code></pre>
+                <!-- END OF NEW FLEX DEMO -->
+
             </div>
 
             <!-- ACCORDION: Background Images and Gradients -->
@@ -922,7 +1049,7 @@
                             <tr><td><code>animation:</code></td><td><strong>Shortcut</strong> for all animation properties. The <strong>name</strong> and <strong>duration</strong> are required values.</td><td><code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s</span><span class="syntax-punct">;</span></code> or <code><span class="syntax-prop">animation</span>: <span class="syntax-string">bounce 1.5s infinite</span><span class="syntax-punct">;</span></code></td></tr>
                             <tr><td><code>@keyframes</code></td><td>Defines the steps of the animation (e.g., <code>0%</code>/<code>from</code> to <code>100%</code>/<code>to</code>).</td><td><code><span class="syntax-keyword">@keyframes</span> <span class="syntax-tag">my-bounce</span> <span class="syntax-punct">{</span> ... <span class="syntax-punct">}</span></code></td></tr>
                             <tr><td><code>animation-name</code></td><td>The name of the <code>@keyframes</code> rule to use.</td><td><code><span class="syntax-prop">animation-name</span>: <span class="syntax-string">bounce</span><span class="syntax-punct">;</span></code></td></tr>
-                            <tr><td><code>animation-duration</code></td><td>How long one cycle of the animation takes.</td><td><code><span class="syntax-prop">animation-duration</span>: <span class="syntax-string">1.5s</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>animation-duration</code></td><td>How long one cycle of the animation takes.</td><td><code><span classs="syntax-prop">animation-duration</span>: <span class="syntax-string">1.5s</span><span class="syntax-punct">;</span></code></td></tr>
                             <tr><td><code>animation-iteration-count</code></td><td>How many times the animation should run (e.g., a number or <code>infinite</code>).</td><td><code><span class="syntax-prop">animation-iteration-count</span>: <span class="syntax-keyword">infinite</span><span class="syntax-punct">;</span></code></td></tr>
                         </tbody>
                     </table>
@@ -1013,7 +1140,35 @@ We                <pre><code><span class="syntax-tag">a</span><span class="synta
                     }
                 });
             }
+
+            // --- Flex Demo ---
+            const flexContainer = document.getElementById('flex-demo-container');
+            const directionSelect = document.getElementById('flex-direction');
+            const justifySelect = document.getElementById('justify-content');
+            const alignSelect = document.getElementById('align-items');
+            const wrapSelect = document.getElementById('flex-wrap');
+
+            if(flexContainer) { // Check if elements exist to avoid errors
+                // Set initial styles from default dropdown values
+                flexContainer.style.flexDirection = directionSelect.value;
+                flexContainer.style.justifyContent = justifySelect.value;
+                flexContainer.style.alignItems = alignSelect.value;
+                flexContainer.style.flexWrap = wrapSelect.value;
+
+                directionSelect.addEventListener('change', function() {
+                    flexContainer.style.flexDirection = this.value;
+                });
+                justifySelect.addEventListener('change', function() {
+                    flexContainer.style.justifyContent = this.value;
+                });
+                alignSelect.addEventListener('change', function() {
+                    flexContainer.style.alignItems = this.value;
+                });
+                wrapSelect.addEventListener('change', function() {
+                    flexContainer.style.flexWrap = this.value;
+                });
+            }
         });
-    </script>
+    </SCriPt>
 </body>
 </html>

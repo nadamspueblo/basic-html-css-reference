@@ -253,6 +253,74 @@
             margin-top: 15px;
             line-height: 1.6;
         }
+
+        /* --- NEW STYLES FOR POSITION DEMO --- */
+        .position-demo-container {
+            position: relative; /* This is the anchor for 'absolute' positioning */
+            height: 300px;
+            border: 2px dashed var(--dark-text-color);
+            background-color: #f5f5ff;
+            border-radius: 6px;
+            margin-top: 15px;
+            padding: 10px;
+            overflow-y: auto; /* For sticky demo */
+        }
+        .position-demo-box {
+            width: 120px;
+            height: 80px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-bg-color);
+            padding: 5px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 0.9em;
+        }
+        .pos-static {
+            background-color: #6c757d; /* A neutral gray */
+            position: static;
+            margin-top: 10px;
+        }
+        .pos-relative {
+            background-color: #007bff; /* Blue */
+            position: relative;
+            top: 10px;
+            left: 30px;
+            margin-top: 10px;
+        }
+        .pos-absolute {
+            background-color: #dc3545; /* Red */
+            position: absolute;
+            top: 40px;
+            right: 10px;
+        }
+        .pos-fixed {
+            background-color: #28a745; /* Green */
+            position: fixed;
+            bottom: 30px; /* Will be relative to viewport */
+            right: 30px;
+            z-index: 1000;
+        }
+        .pos-sticky {
+            background-color: #ffc107; /* Yellow */
+            color: var(--dark-text-color);
+            position: sticky;
+            top: 0;
+            width: 100%; /* Stick to the top of the container */
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .position-demo-container p {
+            /* To create scroll content for sticky */
+            margin-bottom: 10px;
+        }
+        /* --- END OF POSITION DEMO STYLES --- */
         
         /* 4. Accordion Specific Styles (applied to sub-sections) */
 
@@ -675,6 +743,66 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- ACCORDION: CSS Position (NEWLY ADDED) -->
+            <button class="accordion" id="btn-position">
+                CSS Position
+                <span class="icon"></span>
+            </button>
+            <div class="panel">
+                <p>The <code>position</code> property specifies the type of positioning method used for an element. This is key for creating complex layouts and overlapping elements.</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Value</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>static</code></td><td><strong>Default value.</strong> The element is not positioned in any special way; it is always positioned according to the normal flow of the page.</td></tr>
+                            <tr><td><code>relative</code></td><td>The element is positioned relative to its <strong>normal position</strong>. Setting <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code> will move it from its static position without affecting other elements.</td></tr>
+                            <tr><td><code>absolute</code></td><td>The element is positioned relative to its <strong>nearest positioned ancestor</strong> (an ancestor with a position other than <code>static</code>). If no positioned ancestor exists, it uses the <code>&lt;body&gt;</code>.</td></tr>
+                            <tr><td><code>fixed</code></td><td>The element is positioned relative to the <strong>browser window (viewport)</strong>. It will stay in the same place even when the page is scrolled.</td></tr>
+                            <tr><td><code>sticky</code></td><td>A hybrid of <code>relative</code> and <code>fixed</code>. The element acts like <code>relative</code> until it hits a specified offset (e.g., <code>top: 0</code>) during scroll, at which point it "sticks" in place like <code>fixed</code>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Live Demo:</b></p>
+                <p>Scroll inside the demo container to see <code>sticky</code> in action. The <code>fixed</code> box is positioned relative to the whole browser window.</p>
+                <div class="position-demo-container">
+                    <div class="pos-sticky">position: sticky (top: 0)</div>
+                    <p style="margin-top: 10px;">Scrollable content to push the static and relative boxes down...</p>
+                    <div class="position-demo-box pos-static">position: static<br>(Default position setting)</div>
+                    <div class="position-demo-box pos-relative">position: relative<br>(top: 10px, left: 30px)</div>
+                    <div class="position-demo-box pos-absolute">position: absolute<br>(top: 40px, right: 10px)</div>
+                    <p style="height: 200px;">More scrollable content...</p>
+                </div>
+
+                <p style="margin-top: 15px;"><b>Example Code:</b></p>
+                <pre><code><span class="syntax-comment">/* The parent container *must* be positioned for 'absolute' to work predictably */</span>
+<span class="syntax-selector">.container</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">position</span>: <span class="syntax-string">relative</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span>
+
+<span class="syntax-selector">.box-relative</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">position</span>: <span class="syntax-string">relative</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">top</span>: <span class="syntax-string">10px</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span>
+
+<span class="syntax-selector">.box-absolute</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">position</span>: <span class="syntax-string">absolute</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">top</span>: <span class="syntax-string">0</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">right</span>: <span class="syntax-string">0</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span>
+
+<span class="syntax-selector">.box-fixed</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">position</span>: <span class="syntax-string">fixed</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">bottom</span>: <span class="syntax-string">10px</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span>
+
+<span class="syntax-selector">.box-sticky</span> <span class="syntax-punct">{</span>
+  <span class="syntax-prop">position</span>: <span class="syntax-string">sticky</span><span class="syntax-punct">;</span>
+  <span class="syntax-prop">top</span>: <span class="syntax-string">0</span><span class="syntax-punct">;</span>
+<span class="syntax-punct">}</span></code></pre>
+            </div>
 
             <!-- ACCORDION: CSS Flex Properties -->
             <button class="accordion" id="btn-flex-props">
@@ -690,7 +818,7 @@
                             <tr><td><code>display: flex;</code></td><td>Sets the element to display its contents using flex properties</td><td>-</td></tr>
                             <tr><td><code>flex-direction:</code></td><td>Determines whether elements should be arranged horizontally or vertically</td><td><code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">row</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">flex-direction</span>: <span class="syntax-string">column</span><span class="syntax-punct">;</span></code></td></tr>
                             <tr><td><code>justify-content:</code></td><td>Determines how elements are aligned along the <strong>main axis</strong> (horizontal/vertical)</td><td><code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, <code><span class="syntax-prop">justify-content</span>: <span class="syntax-string">space-between</span><span class="syntax-punct">;</span></code></td></tr>
-                            <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <strong>cross axis</strong> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, Warning: <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
+                            <tr><td><code>align-items:</code></td><td>Determines how elements are aligned along the <strong>cross axis</strong> (perpendicular to main axis)</td><td><code><span class="syntax-prop">align-items</span>: <span class="syntax-string">center</span><span class="syntax-punct">;</span></code>, Warning: GET <code><span class="syntax-prop">align-items</span>: <span class="syntax-string">stretch</span><span class="syntax-punct">;</span></code></td></tr>
                             <tr><td><code>flex-wrap:</code></td><td>Determines if the container will expand to a new line when it runs out of room when it runs out of room</td><td><code><span class="syntax-prop">flex-wrap</span>: <span class="syntax-string">wrap</span><span class="syntax-punct">;</span></code></td></tr>
                         </tbody>
                     </table>
@@ -837,7 +965,7 @@
 
                 <h4>Change look when element is hovered</h4>
                 <p>Use the <strong><code>selector:hover</code></strong> pseudo-class to apply different styles when the element is hovered over with a mouse pointer.</p>
-                <pre><code><span class="syntax-tag">a</span><span class="syntax-selector">:hover</span> <span class="syntax-punct">{</span>
+We                <pre><code><span class="syntax-tag">a</span><span class="syntax-selector">:hover</span> <span class="syntax-punct">{</span>
                     <span class="syntax-prop">color</span>: <span class="syntax-string">red</span><span class="syntax-punct">;</span>
                     <span class="syntax-prop">text-decoration</span>: <span class="syntax-string">underline</span><span class="syntax-punct">;</span>
                 <span class="syntax-punct">}</span></code></pre>

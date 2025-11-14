@@ -700,12 +700,33 @@
         <h2 class="static-heading">CSS Reference</h2>
         <div class="content-container">
 
-            <!-- ACCORDION: CSS Selectors -->
+            <!-- ACCORDION: CSS Setup -->
             <button class="accordion active" id="btn-selectors">
-                CSS Selectors
+                CSS Setup
                 <span class="icon"></span> <!-- Replaced text icon with empty span -->
             </button>
             <div class="panel show">
+                <div> 
+                    Follow the steps below to setup an external CSS file for you webpage.
+                    <ol>
+                        <li>Create a file named something like <code>styles.css</code>.</li>
+                        <li>In the <code>&lt;head&gt;</code> section of each webpage you want to style with this file, add the link tag: <code>&lt;link rel="stylesheet" href="styles.css&gt;</code></li>
+                    </ol>
+                    <pre><code><span class="syntax-comment">/* Example head section with title and CSS link. There might be other tags in the head section also */</span>
+&lt;<span class="syntax-tag">head</span>&gt;
+    &lt;<span class="syntax-tag">title</span>&gt;My Webpage Title&lt;/<span class="syntax-tag">title</span>&gt;
+    &lt;<span class="syntax-tag">link</span> <span class="syntax-attr">rel</span>=<span class="syntax-string">"stylesheet"</span> <span class="syntax-attr">href</span>=<span class="syntax-string">"styles.css"</span>&gt;
+&lt;/<span class="syntax-tag">head</span>&gt;
+</code></pre>
+                </div>
+            </div>
+
+            <!-- ACCORDION: CSS Selectors -->
+            <button class="accordion" id="btn-selectors">
+                CSS Selectors
+                <span class="icon"></span> <!-- Replaced text icon with empty span -->
+            </button>
+            <div class="panel">
                 <div class="table-container"> <!-- Added responsive container -->
                     <table>
                         <thead><tr><th>CSS Syntax</th><th>Description</th><th>Example</th></tr></thead>
